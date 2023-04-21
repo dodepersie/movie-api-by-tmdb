@@ -1,29 +1,42 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Main from './main/main.main';
-import Nav from './utilities/nav';
-import NowPlaying from './now_playing/main.now_playing';
-import Popular from './popular/main.popular';
-import Search from './search/main.search';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Nav from "./utilities/nav";
+import { createTheme, NextUIProvider } from "@nextui-org/react";
+import useDarkMode from "use-dark-mode";
+import Footer from "./utilities/Footer";
 
-import './App.css';
-import './modal.css';
+const lightTheme = createTheme({
+  type: "light",
+});
+
+const darkTheme = createTheme({
+  type: "dark",
+});
 
 const App = () => {
+  const darkMode = useDarkMode(false);
+
+  AOS.init({
+    once: "true",
+    easing: "ease-in-out-back",
+    duration: "1000",
+  });
+
+  const toggleDarkMode = () => {
+    darkMode.toggle();
+  };
 
   return (
     <>
-    <Router>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Main />}></Route>
-          <Route path="/popular" element={<Popular />}></Route>
-          <Route path="/now_playing" element={<NowPlaying />}></Route>
-          <Route path="/search" element={<Search  />}></Route>
-          <Route path="*" element={<h1>Not found</h1>}></Route>
-        </Routes>
-      </Router>
+      <NextUIProvider theme={darkMode.value ? darkTheme : lightTheme}>
+        <Router>
+          <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Footer />
+        </Router>
+      </NextUIProvider>
     </>
   );
-}
+};
 
 export default App;

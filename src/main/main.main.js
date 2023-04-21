@@ -1,28 +1,52 @@
-import { Container, Row, Alert } from 'react-bootstrap';
-import Differenttitle from '../utilities/differentTitle';
+import {
+  Container,
+  Row,
+  Col,
+  Text,
+  Spacer,
+  Grid,
+} from "@nextui-org/react";
+import Differenttitle from "../utilities/differentTitle";
+import OverviewNowPlaying from "../now_playing/overview.now_playing";
 
-const Main = () => {
-    Differenttitle("Movie API: Home")
+const Main = (props) => {
+  Differenttitle("MoofliXXI: Home");
 
-    return (
-        <>
-            <Container>
-                <Row className="my-3">
-                <Alert variant="primary">
-                    <h4 class="alert-heading">Information</h4>
-                    <p>Movie API is a website based on ReactJS;
-                    This website using API from TMDB;
-                    You can see popular movies, see playing movies on cinema and search for movies!
-                    </p>
-                    <hr />
-                    <p className="mb-0">
-                    Created by: <a href="https://github.com/dodepersie" target="_blank" rel="noopener noreferrer">@dodepersie</a> - Tutorial by: <a href="https://www.youtube.com/deaafrizal" target="_blank" rel="noopener noreferrer">Dea Afrizal</a>  - Powered by TMDB
-                    </p>
-                </Alert>
-                </Row>
-            </Container>
-        </>
-    )
-}
+  return (
+    <>
+      <Container lg={4} justify="center" alignContent="center" fluid>
+        <Row>
+          <Col gap={4}>
+            <Spacer y={2} />
+            <Text
+              h1
+              size={50}
+              css={{
+                textGradient: "45deg, $blue600 -20%, $pink600 20%",
+              }}
+              weight="bold"
+            >
+              {props.name}
+            </Text>
+            <Text
+              h4
+              css={{
+                textGradient: "45deg, $purple600 -20%, $pink600 100%",
+                lineHeight: "1.7",
+              }}
+              weight="bold"
+            >
+              {props.desc}
+            </Text>
+          </Col>
+        </Row>
+
+        <Grid.Container justify="center" alignContent="center">
+          <OverviewNowPlaying desc="Now playing in US" />
+        </Grid.Container>
+      </Container>
+    </>
+  );
+};
 
 export default Main;

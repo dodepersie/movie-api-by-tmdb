@@ -1,32 +1,21 @@
 import { useEffect, useState } from "react";
-import {
-  Card,
-  Col,
-  Text,
-  Grid,
-  Container,
-  Modal,
-  Spacer,
-} from "@nextui-org/react";
-import { getMovieList } from "../utilities/api";
-import Differenttitle from "../utilities/differentTitle";
+import { Card, Col, Text, Grid, Modal } from "@nextui-org/react";
+import { getNowPlayingListLimited } from "../utilities/api";
 import Modalinternal from "../utilities/Modalinternal";
 import MovieRating from "../utilities/MovieRating";
 import Loaders from "../utilities/Loaders";
 
-const Popular = (props) => {
-  Differenttitle("MoofliXXI: Popular Movies");
-
-  const [popularMovies, setPopularMovies] = useState([]);
+const OverviewNowPlaying = (props) => {
+  const [nowPlaying, setNowPlaying] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isCanceled = false;
     if (!isCanceled) {
       setLoading(true);
-      getMovieList()
+      getNowPlayingListLimited()
         .then((result) => {
-          setPopularMovies(result);
+          setNowPlaying(result);
         })
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
@@ -40,8 +29,8 @@ const Popular = (props) => {
     return loading ? <Loaders /> : null;
   }
 
-  const PopularList = () => {
-    return popularMovies.map((movie, i) => {
+  const OverviewNowPlayingList = () => {
+    return nowPlaying.map((movie, i) => {
       return (
         <div key={i}>
           <Grid data-aos="zoom-out">
@@ -105,18 +94,17 @@ const Popular = (props) => {
   };
 
   return (
-    <Container lg={12} fluid>
-      <Spacer y={1} />
+    <>
       <Text
         h1
         css={{
           "@xsMax": {
-            fontSize: "27px",
+            fontSize: "40px",
           },
 
           textGradient: "45deg, $purple600 -20%, $pink600 100%",
-          p: 10,
-          fontSize: "40px",
+          p: 5,
+          fontSize: "60px",
         }}
         weight="bold"
       >
@@ -125,10 +113,10 @@ const Popular = (props) => {
 
       <Grid.Container gap={2} justify="space-around" alignContent="center">
         <Loading />
-        <PopularList />
+        <OverviewNowPlayingList />
       </Grid.Container>
-    </Container>
+    </>
   );
 };
 
-export default Popular;
+export default OverviewNowPlaying;

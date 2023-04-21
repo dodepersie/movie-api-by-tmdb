@@ -1,46 +1,36 @@
-import React, { useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
-import { createPortal } from 'react-dom'
+import { createPortal } from "react-dom";
+import { Modal, useModal, Button } from "@nextui-org/react";
 
 const Modalinternal = ({ children, activator }) => {
-  const [show, setShow] = useState(false)
+  const { setVisible, bindings } = useModal();
+  const closeHandler = () => {
+    setVisible(false);
+  };
 
-  const content = show && (
-    <div>
-      <div className="overlay">
-        <div>
-          <div className="modal-movie-body">
-            {children}
-            <hr />
-            <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => setShow(false)}
-            >
-            Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+  const content = setVisible && (
+    <Modal
+      closeButton
+      preventClose
+      aria-labelledby="modal-title"
+      open={setVisible}
+      onClose={closeHandler}
+      {...bindings}
+    >
+      {children}
+      <Modal.Footer>
+        <Button color="secondary" size="md" auto onClick={closeHandler}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 
   return (
     <>
-      {activator({ setShow })}
-      {createPortal(
-        <CSSTransition
-          in={show}
-          timeout={200}
-          classNames="modal-transition"
-          unmountOnExit
-        >
-          {() => <div>{content}</div>}
-        </CSSTransition>,
-        document.body
-      )}
+      {activator({ setVisible })}
+      {createPortal(<div>{content}</div>, document.body)}
     </>
-  )
-}
+  );
+};
 
-export default Modalinternal
+export default Modalinternal;

@@ -11,7 +11,7 @@ function Differenttitle(title, prevailOnUnmount = false) {
       if (!prevailOnUnmount) {
         document.title = defaultTitle.current;
       }
-    }, [])
+    }, [prevailOnUnmount])
 }
 
 export default Differenttitle

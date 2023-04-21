@@ -1,65 +1,117 @@
-import { useState } from 'react';
-import { Container, Row, Col, Form, Button, InputGroup, Card } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCalendar, faStar } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import {
+  Card,
+  Col,
+  Text,
+  Grid,
+  Container,
+  Modal,
+  Spacer,
+  Input,
+} from "@nextui-org/react";
 import { searchMovie } from "../utilities/api";
-import Differenttitle from '../utilities/differentTitle';
-import Modalinternal from '../utilities/Modalinternal';
+import Differenttitle from "../utilities/differentTitle";
+import Modalinternal from "../utilities/Modalinternal";
+import MovieRating from "../utilities/MovieRating";
 
-const Search = () => {
-    Differenttitle("Movie API: Search")
+const Search = (props) => {
+  Differenttitle("MoofliXXI: Search");
 
-    const[popularMovies, setPopularMovies] = useState([])
+  const [popularMovies, setPopularMovies] = useState([]);
 
-    const PopularMovieList = () => {
-        return popularMovies.map((movie, i) => {
-        return (
-            <div key={i}>
-                <Card className="d-flex justify-content-center align-items-center" style={{ width: '19rem' }}>
-                <Card.Img variant="top" src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`} alt={movie.title}/>
-                <Card.Body>
-                    <Modalinternal activator={({ setShow }) => (
-                    <Button className="d-inline-block text-truncate" style={{ maxWidth: '280px' }} variant="primary" onClick={() => setShow(true)}>{movie.title}</Button>)}>
-                    <h5>{movie.title}</h5>
-                    <hr />
-                    <p>{movie.overview}</p>
-                    <p><FontAwesomeIcon icon={faCalendar} /> Release date: <strong>{movie.release_date}</strong></p>
-                    <p><FontAwesomeIcon icon={faStar} /> Vote average: <strong>{movie.vote_average}</strong></p>
-                    </Modalinternal>
-                </Card.Body>
-                </Card>
-            </div>
-        )
-        })
+  const SearchMovieList = () => {
+    return popularMovies.map((movie, i) => {
+      return (
+        <div key={i}>
+          <Grid>
+            <Modalinternal
+              activator={({ setVisible }) => (
+                <>
+                  <Spacer y={1} />
+                  <Card
+                    isHoverable
+                    isPressable
+                    variant="bordered"
+                    onPress={() => setVisible(true)}
+                  >
+                    <Card.Header
+                      css={{ position: "absolute", zIndex: 1, top: 5 }}
+                    >
+                      <Col>
+                        <Text color="#ffffffAA">
+                          <MovieRating voteAverage={movie.vote_average} />
+                        </Text>
+
+                        <Text h4 color="#EAEAEA">
+                          {movie.title}
+                        </Text>
+
+                        <Text h6 size={10} color="#EAEAEA">
+                          {movie.release_date}
+                        </Text>
+                      </Col>
+                    </Card.Header>
+
+                    <Card.Image
+                      src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
+                      objectFit="cover"
+                      width={300}
+                      height={340}
+                      alt={movie.title}
+                      css={{
+                        filter: "brightness(0.5) contrast(1.2) saturate(1.2)",
+                      }}
+                    />
+                  </Card>
+                </>
+              )}
+            >
+              <Modal.Header>
+                <Text b id="modal-title" size={20}>
+                  {movie.title}
+                </Text>
+              </Modal.Header>
+
+              <Modal.Body>
+                {movie.overview ? (
+                  <Text>{movie.overview}</Text>
+                ) : (
+                  <Text>Overview not available</Text>
+                )}
+              </Modal.Body>
+            </Modalinternal>
+          </Grid>
+        </div>
+      );
+    });
+  };
+
+  const search = async (q) => {
+    if (q.length > 1) {
+      const query = await searchMovie(q);
+      setPopularMovies(query.results);
     }
+  };
 
-    const search = async(q) => {
-        if(q.length > 3) {
-        const query = await searchMovie(q);
-        setPopularMovies(query.results);
-        }
-    }
+  return (
+    <Container lg={12} fluid>
+      <Spacer y={2} />
 
-    return (
-        <Container className="my-4">
-            <Row className="justify-content-center">
-                <Col sm={12}>
-                <Form className="mb-3">
-                    <InputGroup className="mb-2">
-                    <InputGroup.Text>
-                        <FontAwesomeIcon icon={faSearch} />
-                    </InputGroup.Text>
-                    <Form.Control id="searchMovie" onChange={({target}) => search(target.value)} placeholder="Enter movie name.." />
-                    </InputGroup>
-                </Form>
+      <Input
+        clearable
+        status="default"
+        size="lg"
+        color="primary"
+        onChange={({ target }) => search(target.value)}
+        placeholder={props.desc}
+        fullWidth
+      />
 
-                <div className="d-flex justify-content-center align-items-center flex-wrap gap-4">
-                    <PopularMovieList />
-                </div>
-                </Col>
-            </Row>
-        </Container>
-    )
-}
+      <Grid.Container gap={2} justify="space-around" alignContent="center">
+        <SearchMovieList />
+      </Grid.Container>
+    </Container>
+  );
+};
 
 export default Search;
