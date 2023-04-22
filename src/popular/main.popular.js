@@ -44,7 +44,7 @@ const Popular = (props) => {
     return popularMovies.map((movie, i) => {
       return (
         <div key={i}>
-          <Grid data-aos="zoom-out">
+          <Grid data-aos="zoom-out" css={{ mb: "$5"}}>
             <Modalinternal
               activator={({ setVisible }) => (
                 <Card
@@ -118,6 +118,7 @@ const Popular = (props) => {
           p: 10,
           fontSize: "40px",
         }}
+        style={{ textAlign: "center" }}
         weight="bold"
       >
         {props.desc}

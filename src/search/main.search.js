@@ -15,17 +15,20 @@ import Modalinternal from "../utilities/Modalinternal";
 import MovieRating from "../utilities/MovieRating";
 import { SearchIcon } from "../utilities/Icon";
 
-const Search = (props) => {
+const Search = () => {
   Differenttitle("MoofliXXI: Search");
 
   const [popularMovies, setPopularMovies] = useState([]);
 
   const SearchMovieList = () => {
     return popularMovies.map((movie, i) => {
+      const imgSrc = `${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`;
+      const defaultImgSrc =
+        "https://via.placeholder.com/300x340?text=MoofliXXI";
+
       return (
         <div key={i}>
-          <Grid>
-            <Spacer y={1} />
+          <Grid data-aos="zoom-out" css={{ mb: "$5"}}>
             <Modalinternal
               activator={({ setVisible }) => (
                 <Card
@@ -53,7 +56,11 @@ const Search = (props) => {
                   </Card.Header>
 
                   <Card.Image
-                    src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
+                    src={imgSrc}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = defaultImgSrc;
+                    }}
                     objectFit="cover"
                     width={300}
                     height={340}
@@ -93,7 +100,7 @@ const Search = (props) => {
   };
 
   return (
-    <Container lg={12} fluid>
+    <Container lg={4} justify="center" alignContent="center" fluid>
       <Spacer y={2} />
 
       <Input
@@ -107,6 +114,8 @@ const Search = (props) => {
         fullWidth
         placeholder="Search.."
       />
+
+      <Spacer y={1} />
 
       <Grid.Container gap={2} justify="space-around" alignContent="center">
         <SearchMovieList />

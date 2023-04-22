@@ -19,8 +19,8 @@ const Footer = () => {
               pointer
             />
           </Tooltip>
-          <Text h6 css={{ p: 8 }}>
-            Designed by Mahadi Saputra
+          <Text h6 css={{ p: 8 }} style={{ textAlign: "center" }}>
+            By Mahadi Saputra @ Vercel x React JS &lt;3
           </Text>
         </Grid.Container>
       </Grid>

@@ -18,7 +18,7 @@ const Modalinternal = ({ children, activator }) => {
     >
       {children}
       <Modal.Footer>
-        <Button color="secondary" size="md" auto onClick={closeHandler}>
+        <Button color="secondary" size="md" auto onPress={closeHandler}>
           Close
         </Button>
       </Modal.Footer>

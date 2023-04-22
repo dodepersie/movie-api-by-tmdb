@@ -44,7 +44,7 @@ const NowPlaying = (props) => {
     return nowPlaying.map((movie, i) => {
       return (
         <div key={i}>
-          <Grid data-aos="zoom-out">
+          <Grid data-aos="zoom-out" css={{ mb: "$5"}}>
             <Modalinternal
               activator={({ setVisible }) => (
                 <Card
@@ -119,6 +119,7 @@ const NowPlaying = (props) => {
             p: 10,
             fontSize: "40px",
           }}
+          style={{ textAlign: "center" }}
           weight="bold"
         >
           {props.desc}

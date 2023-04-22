@@ -27,11 +27,11 @@ export const Layout = ({ children }) => (
         ></Route>
         <Route
           path="/now_playing"
-          element={<NowPlaying desc="Movies playing in Indonesia right now!" />}
+          element={<NowPlaying desc="Movies that showing in Indonesia now!" />}
         ></Route>
         <Route
           path="/popular"
-          element={<Popular desc="Popular movies worldwide!" />}
+          element={<Popular desc="Movies that popular worldwide now!" />}
         ></Route>
         <Route
           path="/search"

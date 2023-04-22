@@ -40,7 +40,7 @@ export const getNowPlayingListLimited = async () => {
   const movieNowPlaying = await axios.get(`${baseUrl}/movie/now_playing`, {
     params,
   });
-  return movieNowPlaying.data.results.slice(0, 4);
+  return movieNowPlaying.data.results.slice(0, 8);
 };
 
 export const searchMovie = async (q) => {

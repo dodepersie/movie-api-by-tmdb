@@ -1,6 +1,7 @@
 import { Container, Row, Col, Text, Spacer, Grid } from "@nextui-org/react";
 import Differenttitle from "../utilities/differentTitle";
 import OverviewNowPlaying from "../now_playing/overview.now_playing";
+import ContentEnd from "./contentend.main";
 
 const Main = (props) => {
   Differenttitle("MoofliXXI: Home");
@@ -17,12 +18,12 @@ const Main = (props) => {
               alignItems: "center",
             }}
           >
-            <Spacer y={2} />
+            <Spacer y={1} />
             <Text
               h1
               size={70}
-              css={{
-                textGradient: "45deg, $blue600 -30%, $pink600 60%",
+              css={{  
+                textGradient: "45deg, $purple600 -20%, $pink600 100%",
               }}
               weight="bold"
               style={{ textAlign: "center" }}
@@ -31,10 +32,6 @@ const Main = (props) => {
             </Text>
             <Text
               h4
-              css={{
-                textGradient: "45deg, $purple600 -30%, $pink600 60%",
-                lineHeight: "1.7",
-              }}
               weight="bold"
               style={{ textAlign: "center" }}
             >
@@ -44,7 +41,8 @@ const Main = (props) => {
         </Row>
 
         <Grid.Container justify="center" alignContent="center">
-          <OverviewNowPlaying desc="Now playing in US" />
+          <OverviewNowPlaying desc="International movies showing now" />
+          <ContentEnd />
         </Grid.Container>
       </Container>
     </>
