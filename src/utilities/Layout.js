@@ -4,6 +4,7 @@ import NowPlaying from "./../now_playing/main.now_playing";
 import Popular from "./../popular/main.popular";
 import Search from "./../search/main.search";
 import { Box } from "./Box.js";
+import Footer from "./Footer";
 
 export const Layout = ({ children }) => (
   <>
@@ -38,6 +39,8 @@ export const Layout = ({ children }) => (
         ></Route>
         <Route path="*" element={<h1>Not found</h1>}></Route>
       </Routes>
+      <Footer />
     </Box>
+
   </>
 );

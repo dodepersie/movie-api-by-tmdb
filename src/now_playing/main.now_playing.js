@@ -18,27 +18,27 @@ const NowPlaying = (props) => {
   Differenttitle("MoofliXXI: Now Playing");
 
   const [nowPlaying, setNowPlaying] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let isCanceled = false
+    let isCanceled = false;
     if (!isCanceled) {
-      setLoading(true)
+      setLoading(true);
       getNowPlayingList()
         .then((result) => {
-          setNowPlaying(result)
+          setNowPlaying(result);
         })
         .catch((err) => console.log(err))
-        .finally(() => setLoading(false))
+        .finally(() => setLoading(false));
     }
     return () => {
-      isCanceled = true
-    }
-  }, [])
+      isCanceled = true;
+    };
+  }, []);
 
   function Loading() {
     return loading ? <Loaders /> : null;
-  };
+  }
 
   const NowPLayingList = () => {
     return nowPlaying.map((movie, i) => {
@@ -105,29 +105,31 @@ const NowPlaying = (props) => {
   };
 
   return (
-    <Container lg={4} fluid>
-      <Spacer y={1} />
-      <Text
-        h1
-        css={{
-          "@xsMax": {
-            fontSize: "30px",
-          },
+    <>
+      <Container lg={4} justify="center" alignContent="center" fluid>
+        <Spacer y={1} />
+        <Text
+          h1
+          css={{
+            "@xsMax": {
+              fontSize: "30px",
+            },
 
-          textGradient: "45deg, $purple600 -20%, $pink600 100%",
-          p: 10,
-          fontSize: "40px",
-        }}
-        weight="bold"
-      >
-        {props.desc}
-      </Text>
+            textGradient: "45deg, $purple600 -20%, $pink600 100%",
+            p: 10,
+            fontSize: "40px",
+          }}
+          weight="bold"
+        >
+          {props.desc}
+        </Text>
 
-      <Grid.Container gap={2} justify="space-around" alignContent="center">
-        <Loading />
-        <NowPLayingList />
-      </Grid.Container>
-    </Container>
+        <Grid.Container gap={2} justify="space-around" alignContent="center">
+          <Loading />
+          <NowPLayingList />
+        </Grid.Container>
+      </Container>
+    </>
   );
 };
 

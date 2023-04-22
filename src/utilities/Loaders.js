@@ -1,16 +1,12 @@
 import React from "react";
-import { Loading, Container, Row, Col } from "@nextui-org/react";
+import { Loading, Grid } from "@nextui-org/react";
 
 const Loaders = () => {
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <Loading size="xl" color="secondary" />
-          </Col>
-        </Row>
-      </Container>
+      <Grid.Container justify="center" alignContent="center" css={{mt: 20}}>
+        <Loading size="xl" color="secondary" />
+      </Grid.Container>
     </>
   );
 };

@@ -4,9 +4,14 @@ const apiKey = process.env.REACT_APP_APIKEY;
 const baseUrl = process.env.REACT_APP_BASEURL;
 
 export const getMovieList = async () => {
-  const movie = await axios.get(`
-    ${baseUrl}/movie/popular?page=1&api_key=${apiKey}
-    `);
+  const params = {
+    api_key: apiKey,
+    page: 1,
+  };
+
+  const movie = await axios.get(`${baseUrl}/movie/popular`, {
+    params,
+  });
   return movie.data.results;
 };
 

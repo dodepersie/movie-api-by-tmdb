@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Nav from "./utilities/nav";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
-import Footer from "./utilities/Footer";
 
 const lightTheme = createTheme({
   type: "light",
@@ -32,7 +31,6 @@ const App = () => {
       <NextUIProvider theme={darkMode.value ? darkTheme : lightTheme}>
         <Router>
           <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-          <Footer />
         </Router>
       </NextUIProvider>
     </>

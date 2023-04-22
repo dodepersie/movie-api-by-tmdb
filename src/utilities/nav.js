@@ -14,7 +14,11 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
     <Layout>
       <Navbar isBordered variant="floating">
         <Navbar.Brand>
-          <Navbar.Toggle showIn="xs" aria-label="toggle navigation" css={{ mr: 10 }} />
+          <Navbar.Toggle
+            showIn="xs"
+            aria-label="toggle navigation"
+            css={{ mr: 10 }}
+          />
           <TicketIcon filled />
           <Text b color="inherit" hideIn="xs" css={{ ml: 5 }}>
             MoofliXXI
@@ -31,6 +35,7 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
               jc: "space-between",
             },
           }}
+          enableCursorHighlight
         >
           {menuItems.map(({ menuName, link }) => (
             <Navbar.Link
