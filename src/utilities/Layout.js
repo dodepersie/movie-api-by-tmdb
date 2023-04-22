@@ -21,7 +21,7 @@ export const Layout = ({ children }) => (
           element={
             <Main
               name="MoofliXXI"
-              desc="Simple website to see popular movies, see playing movies on cinema and search for movies!"
+              desc="Simple website to see playing movies, see popular movies and search for movies!"
             />
           }
         ></Route>

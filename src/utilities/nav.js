@@ -1,6 +1,7 @@
 import { Navbar, Link, Switch, Text } from "@nextui-org/react";
 import { Layout } from "./Layout";
 import { SunIcon, MoonIcon, TicketIcon } from "./Icon";
+import SearchBox from "./SearchBox";
 
 const Navigation = ({ darkMode, toggleDarkMode }) => {
   const menuItems = [
@@ -13,14 +14,10 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
   return (
     <Layout>
       <Navbar isBordered variant="floating">
-        <Navbar.Brand>
-          <Navbar.Toggle
-            showIn="xs"
-            aria-label="toggle navigation"
-            css={{ mr: 10 }}
-          />
+        <Navbar.Brand css={{ mr: "$5" }}>
+          <Navbar.Toggle showIn="xs" css={{ mr: "$3" }} />
           <TicketIcon filled />
-          <Text b color="inherit" hideIn="xs" css={{ ml: 5 }}>
+          <Text b color="inherit" hideIn="xs" css={{ m: "$5" }}>
             MoofliXXI
           </Text>
         </Navbar.Brand>
@@ -47,7 +44,15 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
           ))}
         </Navbar.Content>
 
-        <Navbar.Content>
+        <Navbar.Content css={{ "@xsMax": { w: "100%", jc: "space-between" } }}>
+        <Navbar.Item
+          css={{
+            "@xsMax": { w: "100%", jc: "center" },
+          }}
+        >
+          <SearchBox />
+        </Navbar.Item>
+        <Navbar.Item>
           <Switch
             bordered
             size="xl"
@@ -56,7 +61,8 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
             iconOn={<SunIcon filled />}
             iconOff={<MoonIcon filled />}
           />
-        </Navbar.Content>
+        </Navbar.Item>
+      </Navbar.Content>
 
         <Navbar.Collapse>
           {menuItems.map(({ menuName, link }, index) => (
