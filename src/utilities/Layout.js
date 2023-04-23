@@ -5,6 +5,7 @@ import Popular from "./../popular/main.popular";
 import Search from "./../search/main.search";
 import { Box } from "./Box.js";
 import Footer from "./Footer";
+import NotFound from './../main/404.main'
 
 export const Layout = ({ children }) => (
   <>
@@ -37,7 +38,12 @@ export const Layout = ({ children }) => (
           path="/search"
           element={<Search desc="Search movie here.." />}
         ></Route>
-        <Route path="*" element={<h1>Not found</h1>}></Route>
+        <Route path="*" element={
+          <NotFound
+            name="404"
+            desc="Try to check where are you going! :)"
+          />
+        }></Route>
       </Routes>
       <Footer />
     </Box>

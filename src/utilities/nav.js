@@ -45,24 +45,27 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
         </Navbar.Content>
 
         <Navbar.Content css={{ "@xsMax": { w: "100%", jc: "space-between" } }}>
-        <Navbar.Item
-          css={{
-            "@xsMax": { w: "100%", jc: "center" },
-          }}
-        >
-          <SearchBox />
-        </Navbar.Item>
-        <Navbar.Item>
-          <Switch
-            bordered
-            size="xl"
-            checked={darkMode.value}
-            onChange={toggleDarkMode}
-            iconOn={<SunIcon filled />}
-            iconOff={<MoonIcon filled />}
-          />
-        </Navbar.Item>
-      </Navbar.Content>
+          {/*<Navbar.Item
+            css={{
+              "@xsMax": { w: "100%", jc: "center" },
+            }}
+          >
+            <SearchBox />
+          </Navbar.Item>*/}
+
+          <Navbar.Item css={{
+            "@xsMax": { w: "100%", jc: "end" },
+          }}>
+            <Switch
+              bordered
+              size="xl"
+              checked={darkMode.value}
+              onChange={toggleDarkMode}
+              iconOn={<SunIcon filled />}
+              iconOff={<MoonIcon filled />}
+            />
+          </Navbar.Item>
+        </Navbar.Content>
 
         <Navbar.Collapse>
           {menuItems.map(({ menuName, link }, index) => (

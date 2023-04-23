@@ -48,7 +48,7 @@ const ContentEnd = () => {
               style={{ textAlign: "center" }}
               weight="bold"
             >
-              Don't forget watch legal movies &lt;3
+              Watch them on
             </Text>
 
             <Grid.Container gap={2} justify="center" alignContent="center">
