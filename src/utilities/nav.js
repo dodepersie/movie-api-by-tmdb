@@ -13,7 +13,7 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <Layout>
-      <Navbar isBordered variant="floating">
+      <Navbar isCompact variant="sticky">
         <Navbar.Brand css={{ mr: "$5" }}>
           <Navbar.Toggle showIn="xs" css={{ mr: "$3" }} />
           <TicketIcon filled />
@@ -34,10 +34,11 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
           }}
           enableCursorHighlight
         >
-          {menuItems.map(({ menuName, link }) => (
+          {menuItems.map(({ menuName, link }, index) => (
             <Navbar.Link
               href={link}
               isActive={window.location.pathname === link ? true : false}
+              key={index}
             >
               {menuName}
             </Navbar.Link>

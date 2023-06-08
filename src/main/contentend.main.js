@@ -43,7 +43,8 @@ const ContentEnd = () => {
 
                 textGradient: "45deg, $purple600 -20%, $pink600 100%",
                 p: 5,
-                fontSize: "60px",
+                fontSize: "40px",
+                marginTop: ".7rem",
               }}
               style={{ textAlign: "center" }}
               weight="bold"
@@ -51,9 +52,9 @@ const ContentEnd = () => {
               Watch them on
             </Text>
 
-            <Grid.Container gap={2} justify="center" alignContent="center">
-              {streamingPlatform.map(({ platformName, platformImg }) => (
-                <Tooltip content={platformName} color="primary" placement="top">
+            <Grid.Container gap={1} justify="center" alignContent="center">
+              {streamingPlatform.map(({ platformName, platformImg }, index) => (
+                <Tooltip content={platformName} color="primary" placement="top" key={index}>
                   <Grid data-aos="zoom-out" css={{ mb: "$5" }}>
                     <Image
                       showSkeleton

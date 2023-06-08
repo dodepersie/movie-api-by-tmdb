@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react"
 
-function Differenttitle(title, prevailOnUnmount = false) {
+export default function DifferentTitle(title, prevailOnUnmount = false) {
     const defaultTitle = useRef(document.title);
   
     useEffect(() => {
@@ -13,5 +13,3 @@ function Differenttitle(title, prevailOnUnmount = false) {
       }
     }, [prevailOnUnmount])
 }
-
-export default Differenttitle

@@ -1,21 +1,12 @@
-import {
-  Avatar,
-  Row,
-  Col,
-  Text,
-  Spacer,
-  Grid,
-} from "@nextui-org/react";
+import { Avatar, Row, Col, Text, Spacer, Grid } from "@nextui-org/react";
 import pic1 from "./../assets/1.jpg";
 
 export const UserCard = ({
   avatarUrl,
   avatarProps,
   css,
-  onClick,
   ...props
 }) => {
-
   return (
     <Grid.Container
       className="user-twitter-card__container"
@@ -25,10 +16,9 @@ export const UserCard = ({
         padding: "$sm",
         ...css,
       }}
-      onClick={onClick}
       {...props}
     >
-      <Row justify="space-between" align="center">
+      <Row justify="center" align="center">
         <Col span={3}>
           <Avatar
             size="lg"
@@ -38,11 +28,12 @@ export const UserCard = ({
             {...avatarProps}
           />
         </Col>
+
         <Col span={9}>
           <Row>
             <Grid xs={12} direction="column">
-              <Text className="user-twitter-card__text" b size={15}>
-                Mahadi Saputra
+              <Text className="user-twitter-card__text" b size={14.4}>
+                I Dewa Gede Mahadi Saputra
               </Text>
               <Text
                 className="user-twitter-card__text"
@@ -56,6 +47,7 @@ export const UserCard = ({
           </Row>
         </Col>
       </Row>
+
       <Grid.Container className="user-twitter-card__username-container">
         <Grid xs={12}>
           <Text
@@ -64,7 +56,7 @@ export const UserCard = ({
             css={{ mt: "$5" }}
             color="#888888"
           >
-            '01 \\ Information System '19
+            🌟 '01 | 🚀 A Junior Wannabe Fullstack Developer
           </Text>
         </Grid>
       </Grid.Container>
@@ -82,7 +74,7 @@ export const UserCard = ({
             size={14}
             css={{ mr: "$1" }}
           >
-            1.15K
+            1.13K
           </Text>
           Following
         </Text>
@@ -95,7 +87,7 @@ export const UserCard = ({
             size={14}
             css={{ mr: "$1" }}
           >
-            3.3K
+            3.09K
           </Text>
           Followers
         </Text>

@@ -3,44 +3,39 @@ import axios from "axios";
 const apiKey = process.env.REACT_APP_APIKEY;
 const baseUrl = process.env.REACT_APP_BASEURL;
 
-export const getMovieList = async () => {
-  const params = {
-    api_key: apiKey,
-    page: 1,
-  };
-
-  const movie = await axios.get(`${baseUrl}/movie/popular`, {
-    params,
-  });
-  return movie.data.results;
-};
-
 export const getNowPlayingList = async () => {
   const params = {
     api_key: apiKey,
-    page: 1,
-    language: "en-US",
+  };
+
+  const movieNowPlaying = await axios.get(`${baseUrl}/trending/movie/week`, {
+    params,
+  });
+  return movieNowPlaying.data.results.slice(0, 8);
+};
+
+export const getNowPlayingListID = async () => {
+  const params = {
+    api_key: apiKey,
     region: "ID",
   };
 
   const movieNowPlaying = await axios.get(`${baseUrl}/movie/now_playing`, {
     params,
   });
-  return movieNowPlaying.data.results;
+  return movieNowPlaying.data.results.slice(0, 18);
 };
 
-export const getNowPlayingListLimited = async () => {
+export const getPopularMovieList = async () => {
   const params = {
     api_key: apiKey,
-    page: 1,
-    language: "en-US",
-    region: "US",
   };
 
-  const movieNowPlaying = await axios.get(`${baseUrl}/movie/now_playing`, {
+  const movie = await axios.get(`${baseUrl}/movie/popular`, {
     params,
   });
-  return movieNowPlaying.data.results.slice(0, 8);
+
+  return movie.data.results.slice(0, 18);
 };
 
 export const searchMovie = async (q) => {

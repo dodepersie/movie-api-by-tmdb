@@ -5,28 +5,25 @@ import { UserCard } from "./UserCard";
 
 const Footer = () => {
   return (
-    <>
-      <Spacer y={1} />
+    <Grid>
+      <Spacer y={0.5} />
+      <Grid.Container justify="center" alignContent="center">
+        <Tooltip placement="topStart" content={<UserCard />}>
+          <Avatar
+            src={pic1}
+            text="Dode Mahadi"
+            color="gradient"
+            bordered
+            pointer
+          />
+        </Tooltip>
+        <Text h6 css={{ p: 8 }} style={{ textAlign: "center" }}>
+          By Mahadi Saputra @ Vercel x React &lt;3
+        </Text>
+      </Grid.Container>
 
-      <Grid>
-        <Grid.Container justify="center" alignContent="center">
-          <Tooltip placement="topStart" content={<UserCard />}>
-            <Avatar
-              src={pic1}
-              text="Dode Mahadi"
-              color="gradient"
-              bordered
-              pointer
-            />
-          </Tooltip>
-          <Text h6 css={{ p: 8 }} style={{ textAlign: "center" }}>
-            By Mahadi Saputra @ Vercel x React JS &lt;3
-          </Text>
-        </Grid.Container>
-      </Grid>
-
-      <Spacer y={1} />
-    </>
+      <Spacer y={0.5} />
+    </Grid>
   );
 };
 

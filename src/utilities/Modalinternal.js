@@ -9,11 +9,11 @@ const Modalinternal = ({ children, activator }) => {
 
   const content = setVisible && (
     <Modal
-      closeButton
       preventClose
       aria-labelledby="modal-title"
       open={setVisible}
       onClose={closeHandler}
+      css={{ marginLeft: "auto", marginRight: "auto", paddingTop: "1rem"}}
       {...bindings}
     >
       {children}

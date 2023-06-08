@@ -8,15 +8,18 @@ const MovieRating = ({ voteAverage }) => {
   if (rating < 1) rating = 0;
   if (rating > 5) rating = 5;
 
+  // Bulatkan 1 angka dibelakang koma
+  voteAverage = voteAverage.toFixed(1);
+
   const starIcons = [];
   for (let i = 0; i < rating; i++) {
-    starIcons.push(<StarIcon filled />);
+    starIcons.push(<StarIcon key={i} filled />);
   }
 
   return (
     <>
       <Tooltip content={`Vote Average: ${voteAverage}`} color="primary" placement="bottom" css={{ zIndex: 999 }}>
-        <div style={{ display: "flex" }}>{starIcons}</div>
+        <div style={{ display: "flex", color: "#FFFFAA" }}>{starIcons}</div>
       </Tooltip>
     </>
   );

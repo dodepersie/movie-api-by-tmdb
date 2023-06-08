@@ -1,8 +1,8 @@
 import { Container, Row, Col, Text, Spacer } from "@nextui-org/react";
-import Differenttitle from "../utilities/differentTitle";
+import DifferentTitle from "../utilities/differentTitle";
 
 const NotFound = (props) => {
-  Differenttitle("MoofliXXI: Not Found");
+  DifferentTitle("MoofliXXI: Not Found");
 
   return (
     <>
