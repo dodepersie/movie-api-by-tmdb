@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Text, Grid, Modal } from "@nextui-org/react";
-import { getPopularMovieList } from "../utilities/api";
+import { getTrendingPersonList } from "../utilities/api";
 import ModalInternal from "../utilities/ModalInternal";
-import MovieRating from "../utilities/MovieRating";
 
 const PopularList = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
+  const [trendingPerson, setTrendingPerson] = useState([]);
 
   useEffect(() => {
-    getPopularMovieList()
+    getTrendingPersonList()
       .then((result) => {
-        setPopularMovies(result);
+        const slicedData = result.slice(0, 18);
+        setTrendingPerson(slicedData);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  return popularMovies
-    .sort((a, b) => b.vote_average - a.vote_average)
-    .map((movie, i) => {
+  return trendingPerson
+    .sort((a, b) => b.popularity - a.popularity)
+    .map((person, i) => {
       return (
         <Grid xs={6} sm={2} md={2} data-aos="zoom-out" key={i}>
           <ModalInternal
@@ -30,23 +30,21 @@ const PopularList = () => {
               >
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                   <Col>
-                    <MovieRating voteAverage={movie.vote_average} />
-
-                    <Text h5 color="#EAEAEA">
-                      {movie.title}
+                    <Text h3 color="#EAEAEA">
+                      {person.name}
                     </Text>
 
                     <Text h6 size={10} color="#EAEAEA">
-                      {movie.release_date}
+                      {person.release_date}
                     </Text>
                   </Col>
                 </Card.Header>
 
                 <Card.Image
-                  src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
+                  src={`${process.env.REACT_APP_BASEIMGURL}/${person.profile_path}`}
                   objectFit="cover"
                   height={325}
-                  alt={`Poster for ${movie.title}`}
+                  alt={`Poster for ${person.name}`}
                   css={{
                     filter: "brightness(0.7) contrast(1.2) saturate(1.2)",
                   }}
@@ -56,13 +54,25 @@ const PopularList = () => {
           >
             <Modal.Header>
               <Text b id="modal-title" size={20}>
-                {movie.title}
+                {person.name}
               </Text>
             </Modal.Header>
 
             <Modal.Body>
-              {movie.overview && <Text>{movie.overview}</Text>}
-              {!movie.overview && <Text>Overview not available</Text>}
+              <Text css={{ mb: "0" }}>
+                <strong>Known for</strong>: {person.known_for_department}
+              </Text>
+              {person.known_for.map((known, i) => {
+                return (
+                  <Text css={{ mb: "0" }} key={i}>
+                    <strong>Film</strong>: {known.original_title} ({" "}
+                    {known.release_date} )
+                  </Text>
+                );
+              })}
+              <Text>
+                <strong>Popularity</strong>: {person.popularity}
+              </Text>
             </Modal.Body>
           </ModalInternal>
         </Grid>

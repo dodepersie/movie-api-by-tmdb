@@ -1,19 +1,19 @@
 import { Navbar, Link, Switch, Text } from "@nextui-org/react";
 import { Layout } from "./Layout";
 import { SunIcon, MoonIcon, TicketIcon } from "./Icon";
-import SearchBox from "./SearchBox";
 
 const Navigation = ({ darkMode, toggleDarkMode }) => {
   const menuItems = [
     { menuName: "Home", link: "/" },
     { menuName: "Now Playing", link: "/now_playing" },
     { menuName: "Popular", link: "/popular" },
+    { menuName: "Person", link: "/person" },
     { menuName: "Search", link: "/search" },
   ];
 
   return (
     <Layout>
-      <Navbar isCompact variant="sticky">
+      <Navbar variant="floating">
         <Navbar.Brand css={{ mr: "$5" }}>
           <Navbar.Toggle showIn="xs" css={{ mr: "$3" }} />
           <TicketIcon filled />
@@ -23,9 +23,9 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
         </Navbar.Brand>
 
         <Navbar.Content
-          activeColor="secondary"
+          activeColor="primary"
           hideIn="xs"
-          variant="underline"
+          variant="underline-rounded"
           css={{
             "@xsMax": {
               w: "100%",
@@ -45,18 +45,14 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
           ))}
         </Navbar.Content>
 
-        <Navbar.Content css={{ "@xsMax": { w: "100%", jc: "space-between" } }}>
-          {/*<Navbar.Item
+        <Navbar.Content
+          css={{ "@xsMax": { w: "100%", jc: "space-between" } }}
+        >
+          <Navbar.Item
             css={{
-              "@xsMax": { w: "100%", jc: "center" },
+              "@xsMax": { w: "100%", jc: "end" },
             }}
           >
-            <SearchBox />
-          </Navbar.Item>*/}
-
-          <Navbar.Item css={{
-            "@xsMax": { w: "100%", jc: "end" },
-          }}>
             <Switch
               bordered
               size="xl"
@@ -68,18 +64,15 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
           </Navbar.Item>
         </Navbar.Content>
 
-        <Navbar.Collapse>
+        <Navbar.Collapse showIn="xs" css={{ mt: ".5rem" }}>
           {menuItems.map(({ menuName, link }, index) => (
             <Navbar.CollapseItem
               key={index}
-              activeColor="secondary"
+              activeColor="primary"
               isActive={window.location.pathname === link ? true : false}
             >
               <Link
                 color="inherit"
-                css={{
-                  minWidth: "100%",
-                }}
                 href={link}
               >
                 {menuName}

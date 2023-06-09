@@ -1,43 +1,37 @@
 import React, { Suspense } from "react";
-import {
-  Text,
-  Grid,
-  Container,
-} from "@nextui-org/react";
+import { Text, Grid } from "@nextui-org/react";
 import DifferentTitle from "../utilities/differentTitle";
-import Loaders from "../utilities/Loaders";
+import LoadersSixGrid from "../utilities/LoadersSixGrid";
 
-const NowPLayingList = React.lazy(() => import('./mainlist.now_playing'))
+const NowPLayingList = React.lazy(() => import("./mainlist.now_playing"));
 
 const NowPlaying = (props) => {
   DifferentTitle("MoofliXXI: Now Playing");
 
   return (
     <>
-      <Container lg css={{ p: "$4" }}>
-        <Text
-          h1
-          css={{
-            "@xsMax": {
-              fontSize: "40px",
-            },
+      <Text
+        h1
+        css={{
+          "@xsMax": {
+            fontSize: "40px",
+          },
 
-            textGradient: "45deg, $purple600 -20%, $pink600 100%",
-            p: 10,
-            fontSize: "50px",
-          }}
-          style={{ textAlign: "center" }}
-          weight="bold"
-        >
-          {props.desc}
-        </Text>
-
-        <Grid.Container gap={1} justify="center" alignContent="center">
-          <Suspense fallback={<Loaders />}>
-            <NowPLayingList />
-          </Suspense>
-        </Grid.Container>
-      </Container>
+          textGradient: "45deg, $purple600 -20%, $pink600 100%",
+          fontSize: "50px",
+          marginTop: "1.4rem",
+        }}
+        style={{ textAlign: "center" }}
+        weight="bold"
+      >
+        {props.desc}
+      </Text>
+      
+      <Grid.Container gap={0.3} justify="center" alignContent="center">
+        <Suspense fallback={<LoadersSixGrid />}>
+          <NowPLayingList />
+        </Suspense>
+      </Grid.Container>
     </>
   );
 };

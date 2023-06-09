@@ -1,7 +1,7 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { BrowserRouter as Router } from "react-router-dom";
-import Nav from "./utilities/nav";
+import Nav from "./utilities/NavigationBar";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import useDarkMode from "use-dark-mode";
 
@@ -27,13 +27,11 @@ const App = () => {
   };
 
   return (
-    <>
-      <NextUIProvider theme={darkMode.value ? darkTheme : lightTheme}>
-        <Router>
-          <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        </Router>
-      </NextUIProvider>
-    </>
+    <NextUIProvider theme={darkMode.value ? darkTheme : lightTheme}>
+      <Router>
+        <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </Router>
+    </NextUIProvider>
   );
 };
 

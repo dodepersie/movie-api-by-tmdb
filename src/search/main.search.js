@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Grid, Container, Spacer, Input } from "@nextui-org/react";
-import { searchMovie } from "../utilities/api";
+import { Grid, Spacer, Input } from "@nextui-org/react";
+import { searchAll } from "../utilities/api";
 import { SearchIcon } from "../utilities/Icon";
 import DifferentTitle from "../utilities/differentTitle";
 
@@ -9,39 +9,39 @@ const SearchList = React.lazy(() => import("./searchlist.search.js"));
 const Search = () => {
   DifferentTitle("MoofliXXI: Search");
 
-  const [popularMovies, setPopularMovies] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
-  const search = async (q) => {
-    if (q.length > 3) {
-      const query = await searchMovie(q);
-      setPopularMovies(query.results);
+  const handleSearch = async (query) => {
+    if (query.length > 3) {
+      const results = await searchAll(query);
+      const slicedResults = results.results.slice(0, 18);
+      setSearchResults(slicedResults);
     }
-  };
+  };  
 
   return (
-    <Container lg css={{ p: "$4" }}>
+    <>
       <Spacer y={1} />
       <Input
         fullWidth
-        contentLeft={
-          <SearchIcon fill="var(--nextui-colors-accents6)" size={16} />
-        }
-        onChange={({ target }) => search(target.value)}
+        contentLeft={<SearchIcon fill="var(--nextui-colors-accents6)" size={16} />}
+        onChange={({ target }) => handleSearch(target.value)}
         contentLeftStyling={false}
         css={{
           "& .nextui-input-content--left": {
             ml: "$4",
-            dflex: "center",
+            display: "flex",
+            alignItems: "center",
           },
         }}
-        placeholder="Search..."
+        placeholder="Search Movie/TV Series/Actor ..."
       />
       <Spacer y={1} />
 
-      <Grid.Container gap={1} justify="center" alignContent="center">
-        <SearchList popularMovies={popularMovies} />
+      <Grid.Container gap={0.3} justify="center" alignContent="center">
+        <SearchList searchResults={searchResults} />
       </Grid.Container>
-    </Container>
+    </>
   );
 };
 

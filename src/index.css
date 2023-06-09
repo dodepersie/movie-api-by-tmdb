@@ -17,3 +17,30 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.skeleton-image {
+  background-color: hsl(0, 0%, 80%);
+  border-radius: 14px;
+}
+
+.skeleton-image.shimmer {
+  animation: shimmer 1s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-color: hsl(0, 0%, 80%);
+}
+25% {
+    background-color: hsl(0, 0%, 85%);
+}
+50% {
+    background-color: hsl(0, 0%, 90%);
+}
+75% {
+    background-color: hsl(0, 0%, 85%);
+}
+100% {
+    background-color: hsl(0, 0%, 80%);
+}
+}

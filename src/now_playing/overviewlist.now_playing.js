@@ -1,79 +1,72 @@
 import React, { useEffect, useState } from "react";
 import { Card, Col, Text, Grid, Modal } from "@nextui-org/react";
-import { getNowPlayingList } from "../utilities/api";
-import Modalinternal from "../utilities/Modalinternal";
+import ModalInternal from "../utilities/ModalInternal";
 import MovieRating from "../utilities/MovieRating";
+import { getTrendingMovieList } from "../utilities/api";
 
 const OverviewList = () => {
-  const [nowPlaying, setNowPlaying] = useState([]);
+  const [trendingMovie, setTrendingMovie] = useState([]);
 
   useEffect(() => {
-    getNowPlayingList()
+    getTrendingMovieList()
       .then((result) => {
-        setNowPlaying(result);
+        setTrendingMovie(result);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  return nowPlaying.map((movie, i) => {
-    return (
-      <Grid
-        xs={6}
-        sm={3}
-        lg={3}
-        data-aos="zoom-out"
-        key={i}
-      >
-        <Modalinternal
-          activator={({ setVisible }) => (
-            <Card
-              isHoverable
-              isPressable
-              variant="bordered"
-              onPress={() => setVisible(true)}
-            >
-              <Card.Header css={{ position: "absolute" }}>
-                <Col>
-                  <MovieRating voteAverage={movie.vote_average} />
+  return trendingMovie
+    .sort((a, b) => b.vote_average - a.vote_average)
+    .map((movie, i) => {
+      return (
+        <Grid xs={6} sm={3} lg={3} data-aos="zoom-out" key={i}>
+          <ModalInternal
+            activator={({ setVisible }) => (
+              <Card
+                isHoverable
+                isPressable
+                variant="flat"
+                onClick={() => setVisible(true)}
+              >
+                <Card.Header css={{ position: "absolute" }}>
+                  <Col>
+                    <MovieRating voteAverage={movie.vote_average} />
 
-                  <Text h4 color="#EAEAEA">
-                    {movie.title}
-                  </Text>
+                    <Text h5 color="#EAEAEA">
+                      {movie.title}
+                    </Text>
 
-                  <Text h6 size={10} color="#EAEAEA">
-                    {movie.release_date}
-                  </Text>
-                </Col>
-              </Card.Header>
+                    <Text h6 size={10} color="#EAEAEA">
+                      {movie.release_date}
+                    </Text>
+                  </Col>
+                </Card.Header>
 
-              <Card.Image
-                src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
-                objectFit="cover"
-                alt={movie.title}
-                css={{
-                  filter: "brightness(0.5) contrast(1.2) saturate(1.2)",
-                }}
-              />
-            </Card>
-          )}
-        >
-          <Modal.Header>
-            <Text b id="modal-title" size={20}>
-              {movie.title}
-            </Text>
-          </Modal.Header>
-
-          <Modal.Body>
-            {movie.overview ? (
-              <Text>{movie.overview}</Text>
-            ) : (
-              <Text>Overview not available</Text>
+                <Card.Image
+                  src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
+                  objectFit="cover"
+                  alt={`Poster for ${movie.title}`}
+                  css={{
+                    filter: "brightness(0.7) contrast(1.2) saturate(1.2)",
+                  }}
+                />
+              </Card>
             )}
-          </Modal.Body>
-        </Modalinternal>
-      </Grid>
-    );
-  });
+          >
+            <Modal.Header>
+              <Text b id="modal-title" size={20}>
+                {movie.title}
+              </Text>
+            </Modal.Header>
+
+            <Modal.Body>
+              {movie.overview && <Text>{movie.overview}</Text>}
+              {!movie.overview && <Text>Overview not available</Text>}
+            </Modal.Body>
+          </ModalInternal>
+        </Grid>
+      );
+    });
 };
 
 export default OverviewList;

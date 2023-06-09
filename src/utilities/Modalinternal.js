@@ -1,24 +1,29 @@
 import { createPortal } from "react-dom";
 import { Modal, useModal, Button } from "@nextui-org/react";
 
-const Modalinternal = ({ children, activator }) => {
+const ModalInternal = ({ children, activator }) => {
   const { setVisible, bindings } = useModal();
-  const closeHandler = () => {
-    setVisible(false);
-  };
 
   const content = setVisible && (
     <Modal
       preventClose
       aria-labelledby="modal-title"
-      open={setVisible}
-      onClose={closeHandler}
-      css={{ marginLeft: "auto", marginRight: "auto", paddingTop: "1rem"}}
+      css={{
+        "@xsMax": { w: "95%" },
+        marginLeft: "auto",
+        marginRight: "auto",
+        paddingTop: "1rem",
+      }}
       {...bindings}
     >
       {children}
       <Modal.Footer>
-        <Button color="secondary" size="md" auto onPress={closeHandler}>
+        <Button
+          auto
+          color="primary"
+          size="sm"
+          onPress={() => setVisible(false)}
+        >
           Close
         </Button>
       </Modal.Footer>
@@ -28,9 +33,9 @@ const Modalinternal = ({ children, activator }) => {
   return (
     <>
       {activator({ setVisible })}
-      {createPortal(<div>{content}</div>, document.body)}
+      {createPortal(content, document.body)}
     </>
   );
 };
 
-export default Modalinternal;
+export default ModalInternal;

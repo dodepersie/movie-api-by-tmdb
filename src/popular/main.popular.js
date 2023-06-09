@@ -1,19 +1,15 @@
 import React, { Suspense } from "react";
-import {
-  Text,
-  Grid,
-  Container,
-} from "@nextui-org/react";
+import { Text, Grid } from "@nextui-org/react";
 import DifferentTitle from "../utilities/differentTitle";
-import Loaders from "../utilities/Loaders";
+import LoadersSixGrid from "../utilities/LoadersSixGrid";
 
-const PopularList = React.lazy(() => import('./mainlist.popular'));
+const PopularList = React.lazy(() => import("./mainlist.popular"));
 
 const Popular = (props) => {
   DifferentTitle("MoofliXXI: Popular Movies");
 
   return (
-    <Container lg css={{ p: "$4" }}>
+    <>
       <Text
         h1
         css={{
@@ -22,8 +18,8 @@ const Popular = (props) => {
           },
 
           textGradient: "45deg, $purple600 -20%, $pink600 100%",
-          p: 10,
           fontSize: "50px",
+          marginTop: "1.4rem",
         }}
         style={{ textAlign: "center" }}
         weight="bold"
@@ -31,12 +27,12 @@ const Popular = (props) => {
         {props.desc}
       </Text>
 
-      <Grid.Container gap={1} justify="center" alignContent="center">
-        <Suspense fallback={<Loaders />}>
+      <Grid.Container gap={0.3} justify="center" alignContent="center">
+        <Suspense fallback={<LoadersSixGrid />}>
           <PopularList />
         </Suspense>
       </Grid.Container>
-    </Container>
+    </>
   );
 };
 

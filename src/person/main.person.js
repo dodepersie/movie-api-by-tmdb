@@ -1,10 +1,13 @@
 import React, { Suspense } from "react";
 import { Text, Grid } from "@nextui-org/react";
-import LoadersThreeGrid from "../utilities/LoadersThreeGrid";
+import DifferentTitle from "../utilities/differentTitle";
+import LoadersSixGrid from "../utilities/LoadersSixGrid";
 
-const OverviewNowPlayingList = React.lazy(() => import('./overviewlist.now_playing.js'))
+const PersonList = React.lazy(() => import("./mainlist.person"));
 
-const OverviewNowPlaying = (props) => {
+const Person = (props) => {
+  DifferentTitle("MoofliXXI: Trending Actor & Actress");
+
   return (
     <>
       <Text
@@ -16,7 +19,7 @@ const OverviewNowPlaying = (props) => {
 
           textGradient: "45deg, $purple600 -20%, $pink600 100%",
           fontSize: "50px",
-          marginTop: ".5rem",
+          marginTop: "1.4rem",
         }}
         style={{ textAlign: "center" }}
         weight="bold"
@@ -25,12 +28,12 @@ const OverviewNowPlaying = (props) => {
       </Text>
 
       <Grid.Container gap={0.3} justify="center" alignContent="center">
-        <Suspense fallback={<LoadersThreeGrid />}>
-          <OverviewNowPlayingList />
+        <Suspense fallback={<LoadersSixGrid />}>
+          <PersonList />
         </Suspense>
       </Grid.Container>
     </>
   );
 };
 
-export default OverviewNowPlaying;
+export default Person;

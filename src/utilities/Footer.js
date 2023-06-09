@@ -4,21 +4,24 @@ import { Text, Spacer, Avatar, Grid, Tooltip } from "@nextui-org/react";
 import { UserCard } from "./UserCard";
 
 const Footer = () => {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+
   return (
     <Grid>
       <Spacer y={0.5} />
       <Grid.Container justify="center" alignContent="center">
-        <Tooltip placement="topStart" content={<UserCard />}>
+        <Tooltip placement="top" content={<UserCard />}>
           <Avatar
             src={pic1}
-            text="Dode Mahadi"
+            text="Profile avatar"
             color="gradient"
             bordered
             pointer
           />
         </Tooltip>
         <Text h6 css={{ p: 8 }} style={{ textAlign: "center" }}>
-          By Mahadi Saputra @ Vercel x React &lt;3
+        By Mahadi Saputra @ {currentYear}
         </Text>
       </Grid.Container>
 
