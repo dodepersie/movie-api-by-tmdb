@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Col, Text, Grid, Modal } from "@nextui-org/react";
-import ModalInternal from "../utilities/ModalInternal";
+import Modalinternal from "../utilities/Modalinternal";
 import MovieRating from "../utilities/MovieRating";
 import { getTrendingMovieList } from "../utilities/api";
 
@@ -20,7 +20,7 @@ const OverviewList = () => {
     .map((movie, i) => {
       return (
         <Grid xs={6} sm={3} lg={3} data-aos="zoom-out" key={i}>
-          <ModalInternal
+          <Modalinternal
             activator={({ setVisible }) => (
               <Card
                 isHoverable
@@ -63,7 +63,7 @@ const OverviewList = () => {
               {movie.overview && <Text>{movie.overview}</Text>}
               {!movie.overview && <Text>Overview not available</Text>}
             </Modal.Body>
-          </ModalInternal>
+          </Modalinternal>
         </Grid>
       );
     });

@@ -1,5 +1,5 @@
 import { Card, Col, Text, Grid, Modal } from "@nextui-org/react";
-import ModalInternal from "../utilities/ModalInternal";
+import Modalinternal from "../utilities/Modalinternal";
 import MovieRating from "../utilities/MovieRating";
 
 const SearchList = ({ searchResults }) => {
@@ -32,7 +32,7 @@ const SearchList = ({ searchResults }) => {
 
     return (
       <Grid xs={6} sm={2} md={2} data-aos="zoom-out" key={i}>
-        <ModalInternal
+        <Modalinternal
           activator={({ setVisible }) => (
             <Card
               isHoverable
@@ -121,7 +121,7 @@ const SearchList = ({ searchResults }) => {
               <Text>No data available</Text>
             ) : null}
           </Modal.Body>
-        </ModalInternal>
+        </Modalinternal>
       </Grid>
     );
   });

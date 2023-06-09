@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { Modal, useModal, Button } from "@nextui-org/react";
 
-const ModalInternal = ({ children, activator }) => {
+const Modalinternal = ({ children, activator }) => {
   const { setVisible, bindings } = useModal();
 
   const content = setVisible && (
@@ -38,4 +38,4 @@ const ModalInternal = ({ children, activator }) => {
   );
 };
 
-export default ModalInternal;
+export default Modalinternal;

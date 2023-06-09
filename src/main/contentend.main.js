@@ -1,4 +1,4 @@
-import { Col, Row, Text, Grid, Image, Tooltip } from "@nextui-org/react";
+import { Text, Grid, Image, Tooltip } from "@nextui-org/react";
 
 import cgvLogo from "./../assets/logo/cgv.png";
 import cinemaXXILogo from "./../assets/logo/xxi.png";

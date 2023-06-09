@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Text, Grid, Modal } from "@nextui-org/react";
 import { getTrendingPersonList } from "../utilities/api";
-import ModalInternal from "../utilities/ModalInternal";
+import Modalinternal from "../utilities/Modalinternal";
 
 const PopularList = () => {
   const [trendingPerson, setTrendingPerson] = useState([]);
@@ -20,7 +20,7 @@ const PopularList = () => {
     .map((person, i) => {
       return (
         <Grid xs={6} sm={2} md={2} data-aos="zoom-out" key={i}>
-          <ModalInternal
+          <Modalinternal
             activator={({ setVisible }) => (
               <Card
                 isHoverable
@@ -74,7 +74,7 @@ const PopularList = () => {
                 <strong>Popularity</strong>: {person.popularity}
               </Text>
             </Modal.Body>
-          </ModalInternal>
+          </Modalinternal>
         </Grid>
       );
     });
