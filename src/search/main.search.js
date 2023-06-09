@@ -25,6 +25,7 @@ const Search = () => {
       <Input
         fullWidth
         contentLeft={<SearchIcon fill="var(--nextui-colors-accents6)" size={16} />}
+        aria-label="Search input"
         onChange={({ target }) => handleSearch(target.value)}
         contentLeftStyling={false}
         css={{
@@ -38,7 +39,7 @@ const Search = () => {
       />
       <Spacer y={1} />
 
-      <Grid.Container gap={0.3} justify="center" alignContent="center">
+      <Grid.Container gap={1} justify="center" alignContent="center">
         <SearchList searchResults={searchResults} />
       </Grid.Container>
     </>

@@ -12,7 +12,7 @@ const Modalinternal = ({ children, activator }) => {
         "@xsMax": { w: "95%" },
         marginLeft: "auto",
         marginRight: "auto",
-        paddingTop: "1rem",
+        paddingTop: "$5",
       }}
       {...bindings}
     >

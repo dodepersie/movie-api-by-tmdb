@@ -1,12 +1,14 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Container } from "@nextui-org/react";
-import Main from "./../main/main.main";
-import NowPlaying from "./../now_playing/main.now_playing";
-import Popular from "./../popular/main.popular";
-import Person from "./../person/main.person";
-import Search from "./../search/main.search";
-import NotFound from "./../main/404.main";
 import Footer from "./Footer";
+
+const Main = React.lazy(() => import('./../main/main.main'))
+const NowPlaying = React.lazy(() => import('./../now_playing/main.now_playing'))
+const Popular = React.lazy(() => import('./../popular/main.popular'))
+const Person = React.lazy(() => import('./../person/main.person'))
+const Search = React.lazy(() => import('./../search/main.search'))
+const NotFound = React.lazy(() => import('./../main/404.main'))
 
 export const Layout = ({ children }) => (
   <div data-aos="fade-down">

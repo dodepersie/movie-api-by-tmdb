@@ -29,9 +29,7 @@ const MovieRating = ({ voteAverage }) => {
     >
       <div
         style={{
-          display: "flex",
           color: "#FFFFAA",
-          marginBottom: ".5rem",
         }}
       >
         {starIcons}

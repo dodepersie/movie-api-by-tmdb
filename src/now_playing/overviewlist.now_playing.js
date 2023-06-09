@@ -23,20 +23,33 @@ const OverviewList = () => {
           <Modalinternal
             activator={({ setVisible }) => (
               <Card
-                isHoverable
                 isPressable
-                variant="flat"
                 onClick={() => setVisible(true)}
+                variant="flat"
               >
                 <Card.Header css={{ position: "absolute" }}>
                   <Col>
                     <MovieRating voteAverage={movie.vote_average} />
 
-                    <Text h5 color="#EAEAEA">
+                    <Text
+                      h3
+                      css={{
+                        "@xsMax": {
+                          fontSize: "$md",
+                        },
+                      }}
+                      color="#EAEAEA"
+                    >
                       {movie.title}
                     </Text>
 
-                    <Text h6 size={10} color="#EAEAEA">
+                    <Text
+                      h5
+                      css={{
+                        fontSize: "$xs",
+                      }}
+                      color="#EAEAEA"
+                    >
                       {movie.release_date}
                     </Text>
                   </Col>

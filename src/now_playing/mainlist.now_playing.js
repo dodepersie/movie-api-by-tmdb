@@ -21,7 +21,7 @@ const MainNowPlayingList = () => {
       "https://placehold.co/500x700/EEE/31343C?font=open-sans&text=MoofliXXI";
 
     return (
-      <Grid xs={6} sm={2} md={2} data-aos="zoom-out" key={i}>
+      <Grid xs={6} sm={2} data-aos="zoom-out" key={i}>
         <Modalinternal
           activator={({ setVisible }) => (
             <Card
@@ -51,6 +51,7 @@ const MainNowPlayingList = () => {
                   e.target.src = defaultImgSrc;
                 }}
                 objectFit="cover"
+                width="auto"
                 height={325}
                 alt={`Poster for ${movie.title}`}
                 css={{

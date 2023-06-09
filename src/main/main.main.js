@@ -7,14 +7,10 @@ import ContentEnd from "./contentend.main";
 const Main = () => {
   DifferentTitle("MoofliXXI: Home");
 
-  const currentDate = new Date();
-  const options = { year: "numeric", month: "long", day: "2-digit" };
-  const formattedDate = currentDate.toLocaleDateString("en-US", options);
-
   return (
-    <Grid.Container justify="center" alignContent="center">
-      <MainSwiper desc={`Trending movie ${formattedDate}`} />
-      <OverviewNowPlaying desc="Trending movie of the week" />
+    <Grid.Container justify="start" alignContent="center">
+      <MainSwiper desc="Daily trending movie" />
+      <OverviewNowPlaying desc="Weekly trending movie" />
       <ContentEnd desc="Watch them on" />
     </Grid.Container>
   );

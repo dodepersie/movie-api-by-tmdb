@@ -1,4 +1,4 @@
-import { Text, Grid, Image, Tooltip } from "@nextui-org/react";
+import { Text, Grid, Image, Tooltip, Row, Col } from "@nextui-org/react";
 
 import cgvLogo from "./../assets/logo/cgv.png";
 import cinemaXXILogo from "./../assets/logo/xxi.png";
@@ -22,19 +22,20 @@ const ContentEnd = (props) => {
   ];
 
   return (
-    <>
+    <Grid.Container justify="center" alignContent="center">
       <Text
         h1
         css={{
           "@xsMax": {
-            fontSize: "33px",
+            fontSize: "$3xl",
+            marginTop: "1rem",
           },
-
           textGradient: "45deg, $purple600 -20%, $pink600 100%",
-          fontSize: "40px",
+          fontSize: "$4xl",
           marginTop: "1.4rem",
+          marginBottom: "1rem",
+          textAlign: "center",
         }}
-        style={{ textAlign: "center" }}
         weight="bold"
       >
         {props.desc}
@@ -60,7 +61,7 @@ const ContentEnd = (props) => {
           </Tooltip>
         ))}
       </Grid.Container>
-    </>
+    </Grid.Container>
   );
 };
 

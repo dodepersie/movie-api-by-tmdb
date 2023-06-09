@@ -55,7 +55,15 @@ const MainSwiperList = () => {
                       <Card.Body css={{ p: 0 }}>
                         <Col>
                           <MovieRating voteAverage={movie.vote_average} />
-                          <Text h1 size={20} color="#EAEAEA">
+                          <Text
+                            h3
+                            css={{
+                              "@xsMax": {
+                                fontSize: "$md",
+                              },
+                            }}
+                            color="#EAEAEA"
+                          >
                             {movie.title}
                           </Text>
                         </Col>
@@ -64,6 +72,8 @@ const MainSwiperList = () => {
                     <Card.Image
                       src={`${process.env.REACT_APP_BASEIMGURL}/${movie.backdrop_path}`}
                       objectFit="cover"
+                      width="100%"
+                      height="100%"
                       alt={`Backdrop for ${movie.title}`}
                       css={{
                         filter: "brightness(0.4) contrast(1.2) saturate(1.2)",

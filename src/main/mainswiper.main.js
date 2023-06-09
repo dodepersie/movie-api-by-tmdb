@@ -10,14 +10,13 @@ const MainSwiper = (props) => {
         h1
         css={{
           "@xsMax": {
-            fontSize: "40px",
+            fontSize: "$3xl",
           },
 
           textGradient: "45deg, $purple600 -20%, $pink600 100%",
-          fontSize: "50px",
+          fontSize: "$5xl",
           marginTop: "1.4rem",
         }}
-        style={{ textAlign: "center" }}
         weight="bold"
       >
         {props.desc}
