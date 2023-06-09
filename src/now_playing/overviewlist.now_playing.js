@@ -60,8 +60,16 @@ const OverviewList = () => {
             </Modal.Header>
 
             <Modal.Body>
-              {movie.overview && <Text>{movie.overview}</Text>}
-              {!movie.overview && <Text>Overview not available</Text>}
+              {movie.overview ? (
+                <>
+                  <Text>
+                    <strong>Original title</strong>: {movie.original_title}
+                  </Text>
+                  <Text>{movie.overview}</Text>
+                </>
+              ) : (
+                <Text>Overview not available</Text>
+              )}
             </Modal.Body>
           </Modalinternal>
         </Grid>

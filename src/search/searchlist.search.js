@@ -54,10 +54,21 @@ const SearchList = ({ searchResults }) => {
                     </Text>
                   ) : null}
 
-                  {search.media_type === "person" &&
-                    <Text h3 color="#EAEAEA">
+                  {search.media_type === "person" && (
+                    <Text
+                      h1
+                      css={{
+                        "@xsMax": {
+                          fontSize: "$xl",
+                        },
+
+                        fontSize: "$2xl",
+                      }}
+                      color="#EAEAEA"
+                    >
                       {title}
-                    </Text>}
+                    </Text>
+                  )}
 
                   <Text h6 size={10} color="#EAEAEA">
                     {releaseDate}
@@ -89,14 +100,19 @@ const SearchList = ({ searchResults }) => {
 
           <Modal.Body>
             {search.media_type === "movie" && search.overview && (
-              <Text>{search.overview}</Text>
+              <>
+                <Text>
+                  <strong>Original title</strong>: {search.original_title}
+                </Text>
+                <Text>{search.overview}</Text>
+              </>
             )}
 
             {search.media_type === "tv" && search.overview && (
               <Text>{search.overview}</Text>
             )}
 
-            {search.media_type === "person" && (
+            {search.media_type === "person" && search.known_for_department && (
               <>
                 <Text css={{ mb: "0" }}>
                   <strong>Known for</strong>: {search.known_for_department}
@@ -116,10 +132,11 @@ const SearchList = ({ searchResults }) => {
             )}
 
             {(!search.overview && search.media_type === "movie") ||
-            (!search.overview && search.media_type === "tv") ||
-            (!search.known_for_department && search.media_type === "person") ? (
-              <Text>No data available</Text>
-            ) : null}
+              (!search.overview && search.media_type === "tv") ||
+              (!search.known_for_department &&
+                search.media_type === "person" && (
+                  <Text>No data available</Text>
+                ))}
           </Modal.Body>
         </Modalinternal>
       </Grid>

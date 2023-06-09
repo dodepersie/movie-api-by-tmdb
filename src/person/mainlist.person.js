@@ -30,7 +30,17 @@ const PopularList = () => {
               >
                 <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                   <Col>
-                    <Text h3 color="#EAEAEA">
+                    <Text
+                      h1
+                      css={{
+                        "@xsMax": {
+                          fontSize: "$xl",
+                        },
+
+                        fontSize: "$2xl",
+                      }}
+                      color="#EAEAEA"
+                    >
                       {person.name}
                     </Text>
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid } from "@nextui-org/react";
 
-const LoadersThreeGrid = () => {
+const LoadersFourGrid = () => {
   return (
     <>
-      {Array.from({ length: 8 }, (_, index) => (
+      {Array.from({ length: 4 }, (_, index) => (
         <Grid
           xs={6}
           sm={3}
@@ -24,4 +24,4 @@ const LoadersThreeGrid = () => {
   );
 };
 
-export default LoadersThreeGrid;
+export default LoadersFourGrid;

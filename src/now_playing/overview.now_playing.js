@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Text, Grid } from "@nextui-org/react";
-import LoadersThreeGrid from "../utilities/LoadersThreeGrid";
+import LoadersFourGrid from "../utilities/LoadersFourGrid";
 
 const OverviewNowPlayingList = React.lazy(() => import('./overviewlist.now_playing.js'))
 
@@ -25,7 +25,7 @@ const OverviewNowPlaying = (props) => {
       </Text>
 
       <Grid.Container gap={0.3} justify="center" alignContent="center">
-        <Suspense fallback={<LoadersThreeGrid />}>
+        <Suspense fallback={<LoadersFourGrid />}>
           <OverviewNowPlayingList />
         </Suspense>
       </Grid.Container>

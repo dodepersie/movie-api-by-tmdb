@@ -64,7 +64,7 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
           </Navbar.Item>
         </Navbar.Content>
 
-        <Navbar.Collapse showIn="xs" css={{ mt: ".5rem" }}>
+        <Navbar.Collapse showIn="xs" css={{ mt: ".3rem" }}>
           {menuItems.map(({ menuName, link }, index) => (
             <Navbar.CollapseItem
               key={index}

@@ -8,25 +8,26 @@ const Footer = () => {
   const currentYear = currentDate.getFullYear();
 
   return (
-    <Grid>
-      <Spacer y={0.5} />
-      <Grid.Container justify="center" alignContent="center">
-        <Tooltip placement="top" content={<UserCard />}>
-          <Avatar
-            src={pic1}
-            text="Profile avatar"
-            color="gradient"
-            bordered
-            pointer
-          />
-        </Tooltip>
-        <Text h6 css={{ p: 8 }} style={{ textAlign: "center" }}>
-        By Mahadi Saputra @ {currentYear}
-        </Text>
-      </Grid.Container>
-
-      <Spacer y={0.5} />
-    </Grid>
+    <footer style={{ marginTop: "auto" }}>
+      <Grid>
+        <Spacer y={0.5} />
+        <Grid.Container justify="center" alignContent="center">
+          <Tooltip placement="top" content={<UserCard />}>
+            <Avatar
+              src={pic1}
+              text="Profile avatar"
+              color="gradient"
+              bordered
+              pointer
+            />
+          </Tooltip>
+          <Text h6 css={{ p: 8 }} style={{ textAlign: "center" }}>
+            By Mahadi Saputra @ {currentYear}
+          </Text>
+        </Grid.Container>
+        <Spacer y={0.5} />
+      </Grid>
+    </footer>
   );
 };
 

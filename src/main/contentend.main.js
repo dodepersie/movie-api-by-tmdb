@@ -9,7 +9,7 @@ import netflixLogo from "./../assets/logo/netflix.png";
 import primeLogo from "./../assets/logo/primevideo.png";
 import vidioLogo from "./../assets/logo/vidio.png";
 
-const ContentEnd = () => {
+const ContentEnd = (props) => {
   const streamingPlatform = [
     { platformName: "CGV [Offline]", platformImg: cgvLogo },
     { platformName: "Cinema XXI [Offline]", platformImg: cinemaXXILogo },
@@ -37,7 +37,7 @@ const ContentEnd = () => {
         style={{ textAlign: "center" }}
         weight="bold"
       >
-        Watch them on
+        {props.desc}
       </Text>
 
       <Grid.Container gap={1} justify="center" alignContent="center">

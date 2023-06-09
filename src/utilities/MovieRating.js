@@ -31,7 +31,6 @@ const MovieRating = ({ voteAverage }) => {
         style={{
           display: "flex",
           color: "#FFFFAA",
-          marginTop: ".2rem",
           marginBottom: ".5rem",
         }}
       >
